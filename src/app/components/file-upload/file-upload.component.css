@@ -1,0 +1,40 @@
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-weight: bold;
+  text-align: right;
+}
+
+select {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.upload-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.drop-zone {
+  border: 2px dashed #bbb;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+  color: #666;
+  transition: background-color 0.3s;
+}
+
+.drop-zone.drag-over {
+  background-color: #e0f7fa;
+  border-color: #007bff;
+}

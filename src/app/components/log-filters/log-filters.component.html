@@ -1,0 +1,16 @@
+<div class="filters-container">
+  <div class="checkbox-group">
+    <label *ngFor="let level of levels" [class]="level">
+      <input
+        type="checkbox"
+        [checked]="selectedLevels.includes(level)"
+        (change)="toggleLevel(level)" />
+      {{ getHebrewLevel(level) }}
+    </label>
+  </div>
+
+  <div class="button-group">
+    <button (click)="selectAll()">✅ סמן הכל</button>
+    <button (click)="clearAll()">❌ נקה הכל</button>
+  </div>
+</div>

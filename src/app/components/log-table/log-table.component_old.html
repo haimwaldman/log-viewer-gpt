@@ -1,0 +1,51 @@
+<div class="log-wrapper">
+<table class="log-table">
+  <thead>
+    <tr>
+      <th>מס'</th>
+      <th>תאריך</th>
+      <th>רמה</th>
+      <th>הודעה</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let log of pagedLogs"
+      [class.error]="log.level === 'error'"
+      [class.warn]="log.level === 'warn'"
+      [class.info]="log.level === 'info'">
+      <td>{{ log.id }}</td>
+      <td>{{ log.timestamp | date: 'short' }}</td>
+      <td>{{ getHebrewLevel(log.level) }}</td>
+        <td (mouseenter)="showTooltip($event, log.message)">
+        <div class="cell-content">
+            {{ log.message }}
+        </div>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="pagination" *ngIf="totalPages > 1">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">
+    ➡ הקודם
+    </button>
+  <span>{{ currentPage }} מתוך {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+   הבא ⬅
+  </button>
+</div>
+
+
+
+<div class="tooltip" *ngIf="tooltipVisible" [style.top.px]="tooltipY" [style.left.px]="tooltipX">
+  <div class="tooltip-actions">
+    <button class="close-btn" (click)="hideTooltip()">❌</button>
+    <button class="copy-btn" (click)="copyToClipboard()">📋 העתק</button>
+  </div>
+
+  <pre>{{ tooltipContent }}</pre>
+
+  <div class="copy-feedback" *ngIf="copied">✓ הועתק</div>
+</div>
+</div>

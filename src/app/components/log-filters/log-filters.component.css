@@ -1,0 +1,41 @@
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkbox-group label {
+  display: block;
+  text-align: right;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.checkbox-group label.error {
+  color: #dc3545;
+}
+
+.checkbox-group label.warn {
+  color: #ffc107;
+}
+
+.checkbox-group label.info {
+  color: #17a2b8;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+button {
+  flex: 1;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+}

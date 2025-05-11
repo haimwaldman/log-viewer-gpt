@@ -1,27 +1,80 @@
-# LogViewerApp
+# Log Viewer App (Angular 17+ Standalone)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.0.
+אפליקציית צפייה בלוגים עם תפריט צד, טבלת תצוגה, סינון לפי רמות והעלאת קבצים בפורמטים IIS ו־Apache.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🎯 תכונות
 
-## Code scaffolding
+- תפריט צד צף מימין (RTL) עם 3 אקורדיונים:
+  - טעינת קובץ (select של סוג, העלאה ו־drag & drop)
+  - סינון לפי רמות (`info`, `warn`, `error`)
+  - ניהול processors (כפתורי ייצוא וניהול)
+- טבלת לוגים עם:
+  - מספור רץ
+  - תאריך
+  - רמת לוג בצבע שונה
+  - הודעה עם טולטיפ ו־copy אם ארוכה
+- פאגינציה אם מעל 10 רשומות
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## 🚀 הרצה
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install
+ng serve
+```
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 📁 מבנה קבצים
 
-## Running end-to-end tests
+```bash
+src/app/
+  components/
+    log-sidebar/             # תפריט צד
+    log-summary/             # הצגת שם קובץ ומונה לפי רמות
+    log-table/               # טבלת הלוגים
+    file-upload/             # טעינה ו־drag & drop
+    log-filters/             # סינון לפי רמות
+    processor-management/    # ייצוא וניהול
+  shared/
+    log.service.ts           # Parser לפי סוג קובץ
+  app.component.ts/html/css  # layout ראשי
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+## 🧠 פורמטים נתמכים
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### IIS Format
+```
+#Fields: date time cs-method cs-uri-stem sc-status
+2024-05-09 10:00:00 GET /index.html 200
+```
+
+### Apache Format
+```
+127.0.0.1 - - [09/May/2024:10:00:00 +0000] "GET /index.html HTTP/1.1" 500 512
+```
+
+---
+
+## 🛠️ הוספת פורמט custom
+
+1. הוסף `case` חדש ל־`parse()` בתוך `log.service.ts`
+2. צור `parseMyFormat(content: string)` חדש שיחזיר מערך של רשומות עם:
+```ts
+{
+  id: number,
+  timestamp: Date,
+  level: 'error' | 'warn' | 'info',
+  message: string
+}
+```
+
+---
+
+## 📜 רישיון
+קוד פתוח, חופשי לשימוש.

@@ -1,0 +1,31 @@
+<div class="sidebar-container">
+  <button class="main-button" (click)="resetAll()">
+    🧹 נקה הכל
+  </button>
+
+  <details open>
+    <summary>טעינת קובץ</summary>
+    <app-file-upload
+      [processors]="processorTypes"
+      [selectedProcessor]="selectedProcessor"
+      (fileLoaded)="handleFileUpload($event)"
+      (processorChanged)="handleProcessorUpdate($event)">
+    </app-file-upload>
+  </details>
+
+  <details>
+    <summary>סינון לפי רמות</summary>
+    <app-log-filters
+      [selectedLevels]="selectedLevels"
+      (levelsUpdated)="handleLevelsUpdate($event)">
+    </app-log-filters>
+  </details>
+
+  <details>
+    <summary>ניהול Processors</summary>
+    <app-processor-management
+      (export)="exportProcessor.emit()"
+      (manage)="deleteProcessor.emit()">
+    </app-processor-management>
+  </details>
+</div>

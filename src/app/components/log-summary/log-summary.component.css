@@ -1,0 +1,39 @@
+.log-summary {
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.log-counts {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  align-items: center;
+}
+
+.file-name {
+  color: #555;
+  font-style: italic;
+}
+
+.count {
+  padding: 6px 10px;
+  border-radius: 4px;
+  color: white;
+}
+
+.count.error {
+  background-color: #dc3545;
+}
+
+.count.warn {
+  background-color: #ffc107;
+  color: black;
+}
+
+.count.info {
+  background-color: #17a2b8;
+}
+
+
+

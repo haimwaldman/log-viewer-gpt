@@ -1,0 +1,25 @@
+<div class="log-summary">
+  <div class="log-counts">
+    <span class="count error">{{ getHebrewLevel('error') }}: {{ count('error') }}</span>
+    <span class="count warn">{{ getHebrewLevel('warn') }}: {{ count('warn') }}</span>
+    <span class="count info">{{ getHebrewLevel('info') }}: {{ count('info') }}</span>
+
+    <span class="file-name" *ngIf="fileName">
+     <strong>שם הקובץ:</strong>   {{ fileName }}
+    </span>
+  </div>
+</div>
+
+<!-- <div class="log-summary">
+  <div class="file-name" *ngIf="fileName">
+    <strong>שם הקובץ:</strong> {{ fileName }}
+  </div>
+
+  <div class="log-counts">
+    <span class="count error">{{ getHebrewLevel('error') }}: {{ count('error') }}</span>
+    <span class="count warn">{{ getHebrewLevel('warn') }}: {{ count('warn') }}</span>
+    <span class="count info">{{ getHebrewLevel('info') }}: {{ count('info') }}</span> -->
+    <!-- <span class="count warn">אזהרות: {{ count('warn') }}</span> -->
+    <!-- <span class="count info">מידע: {{ count('info') }}</span> -->
+  <!-- </div>
+</div> -->

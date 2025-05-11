@@ -1,0 +1,20 @@
+<div class="file-upload-container">
+  <label for="processor">בחר סוג Processor:</label>
+  <select id="processor" [value]="selectedProcessor" (change)="onProcessorChange($event)">
+    <option *ngFor="let proc of processors" [value]="proc">{{ proc }}</option>
+  </select>
+
+  <label class="upload-btn">
+    📁 טען קובץ
+    <input type="file" hidden (change)="onFileSelected($event)" />
+  </label>
+
+  <div
+    class="drop-zone"
+    [class.drag-over]="dragOver"
+    (dragover)="handleDragOver($event)"
+    (dragleave)="handleDragLeave()"
+    (drop)="handleDrop($event)">
+    גרור קובץ לכאן
+  </div>
+</div>
